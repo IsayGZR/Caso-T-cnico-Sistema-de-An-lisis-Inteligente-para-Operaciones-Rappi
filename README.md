@@ -1,6 +1,5 @@
 # Caso Técnico: Sistema de Análisis Inteligente para Operaciones Rappi
 
-
 ## Arquitectura
 
 ```
@@ -11,7 +10,7 @@ Usuario (navegador)
        │
        ├── Pestaña 1: Bot Conversacional (70%)
        │     │
-       │     ├── Usuario escribe pregunta en español
+       │     ├── El usuario escribe pregunta en español
        │     ├── Groq (Llama 3.3 70B) traduce a código Pandas
        │     ├── Pandas ejecuta sobre los datos del Excel
        │     └── Muestra resultado + gráfico Plotly
@@ -27,9 +26,9 @@ Usuario (navegador)
 
 | Componente | Tecnología | Justificación |
 |---|---|---|
-| Interfaz | Streamlit | Rápido de construir, interactivo, ideal para data apps |
+| Interfaz | Streamlit | Rápido de construir, interactivo|
 | Datos | Pandas | Estándar para manipulación de datos en Python |
-| LLM | Groq (Llama 3.3 70B) | API gratuita, muy rápido, buena calidad para generar código |
+| LLM | Groq (Llama 3.3 70B) | API gratuita y buena para generar código |
 | Gráficos | Plotly | Interactivos, se integra nativamente con Streamlit |
 | PDF | FPDF | Generación de reportes en PDF |
 
@@ -100,11 +99,11 @@ rappi-bot/
 
 ## Decisiones Técnicas
 
-1. **Groq (Llama 3.3 70B) en lugar de GPT-4**: Costo $0, velocidad superior, calidad suficiente para generación de código Pandas.
+1. **Groq (Llama 3.3 70B) en lugar de GPT-4**: Costo $0, calidad suficiente para generación de código Pandas.
 
 2. **Generación de código en vez de RAG**: El LLM genera código Pandas que se ejecuta sobre los datos reales. Esto es más preciso para consultas numéricas que intentar buscar respuestas en texto.
 
-3. **Insights con Pandas + LLM para redacción**: Los análisis estadísticos (anomalías, tendencias) se hacen con Pandas puro (determinista y confiable). Solo se usa el LLM para redactar el reporte final.
+3. **Insights con Pandas + LLM para redacción**: Los análisis estadísticos (anomalías, tendencias) se hacen con Pandas (determinista y confiable). Solo se usa el LLM para redactar el reporte final.
 
 4. **Reintento automático**: Si el código generado falla, se envía el error al LLM para que lo corrija automáticamente, mejorando la tasa de éxito.
 
@@ -114,14 +113,14 @@ rappi-bot/
 
 - El bot puede generar código incorrecto si la pregunta es muy ambigua (se soluciona siendo más específico)
 - A veces confunde CITY con ZONE (Chapinero es zona, no ciudad)
-- El tier gratuito de Groq tiene límite de requests por minuto
-- No hay validación de seguridad del código generado (sandbox)
+- El tier gratuito de Groq tiene límite de requests por minuto (30 requests por minuto, aproximadamente 1,000 requests por día)
 
 ## Próximos Pasos
 
 - Envío automático de reportes por email (con smtplib o n8n)
 - Programar reportes semanales automáticos
-- Agregar sandbox seguro para ejecución de código
 - Dashboard en tiempo real con datos actualizados
+- Mejorar el diseño visual del Dashboard
 - Exportación de resultados a CSV
 - Cache de respuestas frecuentes
+- Integración con Power BI para visualización de dashboards ejecutivos

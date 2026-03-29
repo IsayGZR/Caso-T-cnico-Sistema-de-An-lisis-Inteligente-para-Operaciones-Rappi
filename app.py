@@ -25,8 +25,8 @@ semanas_ordenes = ["L8W", "L7W", "L6W", "L5W", "L4W", "L3W", "L2W", "L1W", "L0W"
 
 def cargar_datos():
     # leemos las dos hojas del excel
-    df_metricas = pd.read_excel(r"C:\Users\isay\Desktop\Prueba Tecnica AI Engineer - Rappi\Rappi Operations Analysis Dummy Data.xlsx", sheet_name="RAW_INPUT_METRICS")
-    df_ordenes = pd.read_excel(r"C:\Users\isay\Desktop\Prueba Tecnica AI Engineer - Rappi\Rappi Operations Analysis Dummy Data.xlsx", sheet_name="RAW_ORDERS")
+    df_metricas = pd.read_excel(r"C:\Users\isay\Desktop\Prueba Tecnica AI Engineer - Rappi\Solucion_Caso2\Rappi Operations Analysis Dummy Data.xlsx", sheet_name="RAW_INPUT_METRICS")
+    df_ordenes = pd.read_excel(r"C:\Users\isay\Desktop\Prueba Tecnica AI Engineer - Rappi\Solucion_Caso2\Rappi Operations Analysis Dummy Data.xlsx", sheet_name="RAW_ORDERS")
     return df_metricas, df_ordenes
 
 # Generamos el contexto para que Groq
