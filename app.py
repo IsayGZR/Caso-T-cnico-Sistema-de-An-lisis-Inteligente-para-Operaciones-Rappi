@@ -104,16 +104,8 @@ IMPORTANTE:
 - Al final agrega sugerencias de otros análisis que podría hacer el usuario
 """
 
-
+# Función principal para manejar la pregunta del usuario, mandarla a Groq, ejecutar el código que nos devuelve y regresar el resultado y el gráfico (si lo hay)
 def hacer_pregunta(modelo, pregunta, df_metricas, df_ordenes, resumen_datos, historial=None):
-    """
-    Con esta función hacemos el proceso completo de recibir la pregunta, mandarla a Groq, ejecutar el código que nos devuelve y regresar el resultado:
-    1. Recibe la pregunta del usuario
-    2. Se la manda a Groq junto con el contexto de los datos
-    3. Groq nos devuelve codigo Python
-    4. Ejecutamos ese codigo
-    5. Regresamos el resultado y el grafico (si )
-    """
 
     # Agregamos el historial para que Groq tenga memoria de la conversacion
     texto_historial = ""
@@ -217,7 +209,7 @@ Corrige el código para que funcione. Genera SOLO el código Python corregido, s
 
 
 def obtener_sugerencias(pregunta):
-    """Sugiere preguntas relacionadas segun lo que pregunto el usuario"""
+    #Sugiere preguntas relacionadas segun lo que pregunto el usuario
     pregunta_lower = pregunta.lower()
 
     if "lead penetration" in pregunta_lower:
