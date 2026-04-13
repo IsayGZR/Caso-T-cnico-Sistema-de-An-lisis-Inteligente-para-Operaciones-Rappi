@@ -96,6 +96,11 @@ CONTEXTO DE NEGOCIO:
 - Cambio WoW (week over week) = (L0W - L1W) / L1W
 - Las métricas son porcentajes o ratios (entre 0 y 1)
 - Para casi todas las métricas, más alto es mejor (excepto Restaurants Markdowns / GMV)
+- IMPORTANTE: Los nombres de zonas (como Miraflores, Chapinero, Usaquén, etc.) están en la columna ZONE, NO en CITY
+- En df_orders la columna METRIC siempre tiene el valor "Orders", no "Total Orders" ni otro nombre
+- Cuando pregunten por órdenes de una zona, filtra por la columna ZONE en df_orders
+- "Esta semana" = columna L0W o L0W_ROLL (la más reciente)
+- "Semana pasada" = columna L1W o L1W_ROLL
 
 IMPORTANTE:
 - Se preciso con los nombres de columnas y métricas (copia exacto como aparecen)
