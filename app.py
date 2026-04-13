@@ -101,6 +101,8 @@ CONTEXTO DE NEGOCIO:
 - Cuando pregunten por órdenes de una zona, filtra por la columna ZONE en df_orders
 - "Esta semana" = columna L0W o L0W_ROLL (la más reciente)
 - "Semana pasada" = columna L1W o L1W_ROLL
+- Cuando hagas gráficos de tendencia para una zona, SIEMPRE filtra también por METRIC antes de transponer. Ejemplo: df_metrics[(df_metrics['ZONE'] == 'X') & (df_metrics['METRIC'] == 'Y')]
+- Si hay múltiples filas para una zona, usa .iloc[0] para quedarte con la primera
 
 IMPORTANTE:
 - Se preciso con los nombres de columnas y métricas (copia exacto como aparecen)
