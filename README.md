@@ -38,7 +38,7 @@ Usuario (navegador)
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <repo-url>
+git clone https://github.com/IsayGZR/Caso-T-cnico-Sistema-de-An-lisis-Inteligente-para-Operaciones-Rappi.git
 cd rappi-bot
 ```
 
