@@ -103,6 +103,8 @@ CONTEXTO DE NEGOCIO:
 - "Semana pasada" = columna L1W o L1W_ROLL
 - Cuando hagas gráficos de tendencia para una zona, SIEMPRE filtra también por METRIC antes de transponer. Ejemplo: df_metrics[(df_metrics['ZONE'] == 'X') & (df_metrics['METRIC'] == 'Y')]
 - Si hay múltiples filas para una zona, usa .iloc[0] para quedarte con la primera
+- "alto" significa mayor al quantile 0.75 (top 25%)
+- "bajo" significa menor al quantile 0.25 (peor 25%)
 
 IMPORTANTE:
 - Se preciso con los nombres de columnas y métricas (copia exacto como aparecen)
@@ -167,8 +169,12 @@ Genera SOLO el código Python, sin explicaciones antes ni después.
         # Obtenemos el resultado y el grafico
         resultado = variables.get("result", "No se generó resultado.")
         grafico = variables.get("fig", None)
+        
+        # si el resultado esta vacio o muy corto, intentamos de nuevo
+        if resultado and len(resultado.strip()) < 20:
+            raise Exception("Resultado vacío o incompleto, reintentando")
 
-        return resultado, grafico, codigo    
+        return resultado, grafico, codigo   
     
     # Si el codigo falla, lo atrapamos para no romper la app y le mandamos el error a Groq para que intente corregirlo y generar un nuevo codigo
     except Exception as e:
